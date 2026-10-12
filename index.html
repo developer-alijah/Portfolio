@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="output.css">
+
+  <style>
+    @keyframes pulseDot {
+
+      0%,
+      100% {
+        opacity: 0.2;
+        box-shadow: 0 0 5px #9cff00;
+      }
+
+      50% {
+        opacity: 1;
+        box-shadow: 0 0 18px #9cff00;
+      }
+    }
+
+    .pulse-dot {
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    @keyframes drawGraph {
+      from {
+        stroke-dashoffset: 1000;
+      }
+
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .graph-line {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawGraph 3s ease-out forwards;
+    }
+
+    @keyframes pointPulse {
+
+      0%,
+      100% {
+        opacity: 0.4;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.3);
+      }
+    }
+
+    .graph-point {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: pointPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .status-dot {
+      animation: statusPulse 1.5s infinite;
+    }
+
+    /* LAPTOP */
+    @media (min-width: 769px) and (max-width: 1200px) {
+      nav {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      nav>div:first-child {
+        gap: 16px;
+      }
+
+      nav h1 {
+        font-size: 1.35rem;
+      }
+
+      nav>div:nth-child(2) {
+        gap: 24px;
+        font-size: 1rem;
+      }
+
+      nav img {
+        max-width: 36px;
+        height: auto;
+      }
+
+      main {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      main>div {
+        gap: 32px;
+      }
+
+      main h2 {
+        font-size: clamp(2.8rem, 5.2vw, 4.5rem);
+      }
+
+      main p {
+        font-size: 1rem;
+      }
+
+      main section {
+        min-width: 0;
+      }
+
+      main .relative.overflow-hidden {
+        padding: 16px;
+      }
+    }
+
+    /* TABLET */
+    @media (max-width: 768px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      nav>div:first-child {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      nav h1 {
+        font-size: 1.25rem;
+      }
+
+      nav img {
+        max-width: 36px;
+        height: auto;
+      }
+
+      main {
+        padding: 40px 20px;
+      }
+
+      main>div {
+        gap: 40px;
+      }
+
+      main h2 {
+        font-size: clamp(2.5rem, 9vw, 4rem);
+        line-height: 1;
+      }
+
+      main p {
+        font-size: 1rem;
+      }
+
+      main section {
+        min-width: 0;
+      }
+    }
+
+    /* MOBILE */
+    @media (max-width: 480px) {
+      nav {
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      nav>div:first-child {
+        width: calc(100% - 52px);
+      }
+
+      nav>div:first-child>div {
+        font-size: 10px;
+      }
+
+      main {
+        padding: 32px 16px;
+      }
+
+      main h2 {
+        font-size: clamp(2.2rem, 10vw, 3rem);
+      }
+
+      main .relative.overflow-hidden {
+        padding: 14px;
+      }
+
+      main .grid.grid-cols-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      main .relative.h-64 {
+        height: 190px;
+      }
+
+      main a {
+        max-width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* animation */
+  </style>
+</head>
+
+<body class="min-h-screen w-full overflow-x-hidden bg-black text-white">
+
+  <!-- BACKGROUND VIDEO -->
+  <video autoplay muted loop playsinline class="fixed left-0 top-0 -z-10 h-full w-full object-cover">
+
+    <source
+      src="vidssave.com Futuristic Green Neon Grid Distorted Perspective Glow Seamless Motion Background Video Loop 4K 60FPS 720P.mp4"
+      type="video/mp4">
+
+  </video>
+
+  <!-- DARK OVERLAY -->
+  <div class="fixed inset-0 -z-10 bg-black/70"></div>
+
+
+
+  <!-- NAVBAR -->
+  <nav class="flex items-center justify-between px-8 py-5 lg:px-10">
+    <div class="flex items-center gap-8">
+      <h1 class="text-2xl font-bold text-[#9CFF00]">ALIJAH MALIK</h1>
+
+      <div class="flex items-center gap-2 rounded-xl bg-[#161616] px-3 py-2 text-xs text-[#9CFF00]">
+        <span class="status-dot h-2.5 w-2.5 rounded-full bg-[#9CFF00]"></span>
+        AVAILABLE TO LEARN
+      </div>
+    </div>
+
+    <div class="hidden items-center gap-18 text-lg font-semibold md:flex">
+      <a href="index.html" class="transition hover:text-[#9CFF00]">Home</a>
+
+      <a href="about.html" class="transition hover:text-[#9CFF00]">About</a>
+
+      <a href="skill.html" class="transition hover:text-[#9CFF00]">Skills</a>
+
+      <a href="contact.html" class="transition hover:text-[#9CFF00]">Contact</a>
+    </div>
+
+    <div class="flex h-9 w-9 items-center justify-center rounded-full">
+      <img src="image-removebg-preview (33).png" alt="Profile" class="w-8">
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <main class="mx-auto flex min-h-[calc(100vh-90px)] max-w-7xl items-center px-6 py-16 lg:px-10">
+    <div class="grid w-full items-center gap-16 lg:grid-cols-2">
+
+      <!-- LEFT CONTENT -->
+      <section>
+        <div class="mb-6 flex flex-wrap items-center gap-3 text-xs">
+          <span class="font-semibold text-[#9CFF00]">AI & DATA SCIENCE STUDENT -</span>
+          <span class="rounded-lg bg-[#181818] px-3 py-2 text-gray-400">REF_SYS:01</span>
+
+          <span class="flex items-center gap-2 rounded-lg bg-[#181818] px-3 py-2 text-[#9CFF00]">
+            <span class="status-dot h-2 w-2 rounded-full bg-[#9CFF00]"></span>
+            ACTIVE: TERM_01
+          </span>
+        </div>
+
+        <h2 class="max-w-2xl text-5xl font-bold leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+          Learning how
+          <br>
+          data becomes
+          <span class="block italic text-[#9CFF00] underline"><em>meaningful.</em></span>
+        </h2>
+
+        <p class="mt-8 max-w-3xl text-lg font-semibold leading-relaxed text-gray-200 sm:text-xl">
+          I'm Alijah Malik, a first-year AI & Data Science student
+          exploring programming, web development, data, and
+          artificial intelligence.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="contact.html"
+            class="rounded-lg bg-[#9CFF00] px-6 py-3 font-bold text-black transition duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(156,255,0,0.35)]">
+            Contact
+          </a>
+
+          <a href="skill.html"
+            class="rounded-lg border border-white/20 px-6 py-3 font-bold transition duration-300 hover:border-[#9CFF00] hover:text-[#9CFF00]">
+            Skills
+          </a>
+        </div>
+      </section>
+
+      <!-- RIGHT DATA PANEL -->
+      <section>
+        <div class="relative overflow-hidden border border-white/10 bg-[#10110D]/90 p-5 shadow-2xl backdrop-blur-md">
+
+          <div class="mb-8 flex items-center justify-between">
+            <span class="text-xs font-semibold tracking-widest text-[#7C812E]">
+              ● SYS_TELEMETRY // MATRIX_V1
+            </span>
+            <span class="text-xs text-[#7C812E]">[LAT 34.6522° N]</span>
+          </div>
+
+          <!-- GRAPH -->
+          <div class="relative h-64">
+            <div class="absolute left-0 right-0 top-10 border-t border-[#9CFF00]/5"></div>
+            <div class="absolute left-0 right-0 top-24 border-t border-[#9CFF00]/5"></div>
+            <div class="absolute left-0 right-0 top-40 border-t border-[#9CFF00]/5"></div>
+            <div class="absolute left-0 right-0 top-56 border-t border-[#9CFF00]/5"></div>
+
+            <svg viewBox="0 0 600 260" class="h-full w-full">
+              <path
+                d="M20 190 C80 205 100 180 150 195 C200 210 210 150 260 165 C310 180 330 110 380 125 C430 140 450 70 500 90 C540 105 555 55 580 70"
+                fill="none" stroke="#9CFF00" stroke-width="2" opacity="0.5" class="graph-line" />
+
+              <circle cx="150" cy="195" r="5" fill="#9CFF00" class="graph-point" />
+              <circle cx="260" cy="165" r="5" fill="#9CFF00" class="graph-point" style="animation-delay:.3s" />
+              <circle cx="380" cy="125" r="5" fill="#9CFF00" class="graph-point" style="animation-delay:.6s" />
+              <circle cx="500" cy="90" r="5" fill="#9CFF00" class="graph-point" style="animation-delay:.9s" />
+              <circle cx="580" cy="70" r="5" fill="#9CFF00" class="graph-point" style="animation-delay:1.2s" />
+            </svg>
+
+            <span class="absolute right-3 top-5 text-[10px] font-bold text-[#9CFF00]">98.4% VAL_ACC</span>
+            <span class="absolute bottom-6 left-1/2 text-[9px] text-[#676A3C]">EPOCH: 99/90</span>
+          </div>
+
+          <!-- DATA CARDS -->
+          <div class="grid grid-cols-4 gap-2">
+            <div class="bg-[#171812] p-3 text-center">
+              <p class="font-bold text-[#9CFF00]">AI</p>
+              <p class="mt-1 text-[8px] text-gray-500">NODE_01</p>
+            </div>
+
+            <div class="bg-[#171812] p-3 text-center">
+              <p class="font-bold text-[#9CFF00]">DATA</p>
+              <p class="mt-1 text-[8px] text-gray-500">STREAM</p>
+            </div>
+
+            <div class="bg-[#171812] p-3 text-center">
+              <p class="font-bold text-[#9CFF00]">PY</p>
+              <p class="mt-1 text-[8px] text-gray-500">SCRIPT</p>
+            </div>
+
+            <div class="bg-[#171812] p-3 text-center">
+              <p class="font-bold text-[#9CFF00]">JS</p>
+              <p class="mt-1 text-[8px] text-gray-500">CLIENT</p>
+            </div>
+          </div>
+
+          <div class="mt-5 flex items-center gap-2 text-[10px] text-[#777A46]">
+            <span class="status-dot h-2 w-2 rounded-full bg-[#9CFF00]"></span>
+            CURRENTLY: Learning → Building → Exploring
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+
+</html>
